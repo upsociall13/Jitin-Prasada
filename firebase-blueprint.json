@@ -1,0 +1,74 @@
+{
+  "entities": {
+    "Initiative": {
+      "title": "Initiative",
+      "description": "A policy or development initiative by Jitin Prasada.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the initiative." },
+        "description": { "type": "string", "description": "A detailed description." },
+        "icon": { "type": "string", "description": "Lucide icon name." },
+        "category": { "type": "string", "description": "The category (e.g., Digital, Commerce)." },
+        "color": { "type": "string", "description": "Tailwind color class." },
+        "order": { "type": "number", "description": "Display order." }
+      },
+      "required": ["title", "description", "icon", "category"]
+    },
+    "MediaItem": {
+      "title": "Media Item",
+      "description": "A news article, video, or speech.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The headline." },
+        "type": { "type": "string", "enum": ["Video", "Speech", "Press"], "description": "Type of media." },
+        "date": { "type": "string", "description": "Display date." },
+        "thumbnail": { "type": "string", "description": "Image URL." },
+        "url": { "type": "string", "description": "Link to content." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." }
+      },
+      "required": ["title", "type", "date"]
+    },
+    "ImpactStat": {
+      "title": "Impact Statistic",
+      "description": "Key performance indicator for the dashboard.",
+      "type": "object",
+      "properties": {
+        "label": { "type": "string", "description": "The name of the stat." },
+        "value": { "type": "string", "description": "The numerical or text value." },
+        "description": { "type": "string", "description": "Brief context." }
+      },
+      "required": ["label", "value"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "A message sent from the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Sender's name." },
+        "email": { "type": "string", "format": "email", "description": "Sender's email." },
+        "userType": { "type": "string", "description": "User persona (e.g., Citizen)." },
+        "message": { "type": "string", "description": "The message content." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When it was sent." }
+      },
+      "required": ["name", "email", "message"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Application user profile.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID." },
+        "email": { "type": "string", "format": "email", "description": "User's email." },
+        "role": { "type": "string", "enum": ["admin", "user"], "description": "User's access level." }
+      },
+      "required": ["uid", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/initiatives/{id}": { "schema": "Initiative", "description": "Collection of initiatives." },
+    "/media/{id}": { "schema": "MediaItem", "description": "Collection of media items." },
+    "/impact_stats/{id}": { "schema": "ImpactStat", "description": "Collection of impact statistics." },
+    "/messages/{id}": { "schema": "ContactMessage", "description": "Collection of contact messages." },
+    "/users/{uid}": { "schema": "User", "description": "Collection of user profiles." }
+  }
+}

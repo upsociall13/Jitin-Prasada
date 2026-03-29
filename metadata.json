@@ -1,0 +1,7 @@
+{
+  "name": "Jitin Prasada | Official Website",
+  "description": "Premium personal branding website for Jitin Prasada, Minister of State for Commerce & Industry and Electronics & IT, Government of India.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
